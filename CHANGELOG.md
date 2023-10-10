@@ -1,6 +1,12 @@
 # Release Notes
 
 
+## v1.0.2 (2023-10-10)
+
+- setup Tailwind CSS.
+- npm install -D tailwindcss postcss autoprefixer.
+- npx tailwindcss init -p.
+
 ## v1.0.1 (2023-10-10)
 
 - npm install react-icons --save.
