@@ -1,17 +1,15 @@
 import Navbar from "../Navbar/index";
-import Header from "../Header/index";
-import Insights from "../Insights/index";
-import Data from "../Data/index";
+import { ContentTypes } from '../../../../services/data-types'
 
-export default function Content() {
+export default function Content(props: ContentTypes) {
+    const { content } = props
+
     return (
         <>
             <div className="content">
                 <Navbar />
                 <main>
-                    <Header />
-                    <Insights />
-                    <Data />
+                    {content}
                 </main>
             </div>
         </>

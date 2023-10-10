@@ -1,5 +1,6 @@
 import { SyntheticEvent, useState } from "react";
-import { BiCodeAlt, BiSolidDashboard, BiStoreAlt, BiAnalyse, BiMessageSquareDots, BiGroup, BiCog, BiLogOutCircle } from "react-icons/bi";
+import { BiCodeAlt, BiSolidDashboard, BiStoreAlt, BiAnalyse, BiMessageSquareDots, BiGroup, BiCog, BiLogOutCircle, BiDrink } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 export default function Sidebar() {
     const [isActive, setIsActive] = useState('')
@@ -16,8 +17,13 @@ export default function Sidebar() {
                 <div className="logo-name"><span>San</span>Ryuu</div>
             </a>
             <ul className="side-menu">
-                <li id='dashboard' className={isActive === 'dashboard' ? 'active' : ''} onClick={(e) => onHandleSideBar(e)}><a href="/dashboard"><i className='bx bxs-dashboard'><BiSolidDashboard /></i>Dashboard</a></li>
+                <li id='dashboard' className={isActive === 'dashboard' ? 'active' : ''} onClick={(e) => onHandleSideBar(e)}>
+                    <Link to="/"><i className='bx bxs-dashboard'><BiSolidDashboard /></i>Dashboard</Link>
+                </li>
                 <li id="shop" className={isActive === 'shop' ? 'active' : ''} onClick={(e) => onHandleSideBar(e)}><a href="/shop"><i className='bx bx-store-alt'><BiStoreAlt /></i>Shop</a></li>
+                <li id="product" className={isActive === 'product' ? 'active' : ''} onClick={(e) => onHandleSideBar(e)}>
+                    <Link to={`/product`}><i className='bx'><BiDrink /></i>Product</Link>
+                </li>
                 <li id="analytics" className={isActive === 'analytics' ? 'active' : ''} onClick={(e) => onHandleSideBar(e)}><a href="/analytics"><i className='bx bx-analyse'><BiAnalyse /></i>Analytics</a></li>
                 <li id="tickets" className={isActive === 'tickets' ? 'active' : ''} onClick={(e) => onHandleSideBar(e)}><a href="/tickets"><i className='bx bx-message-square-dots'><BiMessageSquareDots /></i>Tickets</a></li>
                 <li id="users" className={isActive === 'users' ? 'active' : ''} onClick={(e) => onHandleSideBar(e)}><a href="/users"><i className='bx bx-group'><BiGroup /></i>Users</a></li>

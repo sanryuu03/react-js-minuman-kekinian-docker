@@ -1,12 +1,11 @@
-import Sidebar from '../components/organisms/Dashboard/Sidebar/index'
-import Content from '../components/organisms/Dashboard/Content/index'
+import RoutesIndex from "./Routes"
+import { BrowserRouter } from 'react-router-dom'
 
 function App() {
     return (
-        <>
-            <Sidebar />
-            <Content />
-        </>
+        <BrowserRouter>
+            <RoutesIndex />
+        </BrowserRouter>
     )
 }
 

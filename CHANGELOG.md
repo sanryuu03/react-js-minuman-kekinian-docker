@@ -1,6 +1,12 @@
 # Release Notes
 
 
+## v1.0.3 (2023-10-10)
+
+- npm install react-router-dom localforage match-sorter sort-by.
+- MainLayouts sidebar navbar.
+- Content props children.
+
 ## v1.0.2 (2023-10-10)
 
 - setup Tailwind CSS.
