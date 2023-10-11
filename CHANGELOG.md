@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## v1.0.4 (2023-10-11)
+
+- npm i -D daisyui@latest.
+- set up daisyui.
+
 ## v1.0.3 (2023-10-10)
 
 - npm install react-router-dom localforage match-sorter sort-by.
