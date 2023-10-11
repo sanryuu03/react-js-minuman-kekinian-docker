@@ -1,6 +1,12 @@
 # Release Notes
 
 
+## v1.0.5 (2023-10-11)
+
+- npm i react-toastify.
+- npm install axios.
+- ProductForm => success post.
+
 ## v1.0.4 (2023-10-11)
 
 - npm i -D daisyui@latest.

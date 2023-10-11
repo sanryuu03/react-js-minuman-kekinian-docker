@@ -5,6 +5,7 @@ import MainLayouts from '../../components/organisms/Dashboard/Layouts/index'
 export default function RoutesIndex() {
     const Dashboard = lazy(() => import('../Dashboard'))
     const Product = lazy(() => import('../Product'))
+    const ProductForm = lazy(() => import('../Product/Form'))
 
     return (
         <MainLayouts>
@@ -22,6 +23,14 @@ export default function RoutesIndex() {
                     element={
                         <Suspense fallback={<div>loading...</div>}>
                             <Product />
+                        </Suspense>
+                    }
+                />
+                <Route
+                    path="/product/form"
+                    element={
+                        <Suspense fallback={<div>loading...</div>}>
+                            <ProductForm />
                         </Suspense>
                     }
                 />
