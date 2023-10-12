@@ -1,3 +1,4 @@
+import { useCallback, useEffect, useState } from "react";
 import {
   FcPlus,
   FcEditImage,
@@ -5,43 +6,56 @@ import {
   FcAddDatabase,
 } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import { getMenu } from "../../services/owner";
+import { MenuTypes } from "../../services/data-types";
+
 export default function Product() {
+  const [menuList, setMenuList] = useState([]);
+  const userId = "sanryuu";
+
+  const getMenuAPI = useCallback(async () => {
+    const dataAPI = await getMenu(userId);
+    setMenuList(dataAPI?.data);
+  }, [userId]);
+
+  useEffect(() => {
+    getMenuAPI();
+  }, []);
+
   return (
     <>
       <div className="flex">
-      <Link to="/product/form">
+        <Link to="/product/form">
           <FcAddDatabase size={30} />
-          </Link>
+        </Link>
       </div>
       <div className="overflow-x-auto bottom-data">
         <table className="table glass">
           <thead>
             <tr>
-              <th></th>
+              <th>#</th>
               <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+              <th>Description</th>
+              <th>ingredients</th>
+              <th>Handle</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th>1</th>
-              <td>Cy Ganderton</td>
-              <td>Quality Control Specialist</td>
-              <td>Blue</td>
-            </tr>
-            <tr>
-              <th>2</th>
-              <td>Hart Hagerty</td>
-              <td>Desktop Support Technician</td>
-              <td>Purple</td>
-            </tr>
-            <tr>
-              <th>3</th>
-              <td>Brice Swyre</td>
-              <td>Tax Accountant</td>
-              <td>Red</td>
-            </tr>
+            {menuList?.map((r: MenuTypes, i: number) => {
+              return (
+                <tr key={r.id}>
+                  <th>{i + 1}</th>
+                  <td>{r.name}</td>
+                  <td>{r.description}</td>
+                  <td>{r.ingredients}</td>
+                  <td className="flex">
+                    <Link to={`/product/edit/${r.uuid}`}>
+                      <FcEditImage size={30} />
+                    </Link>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

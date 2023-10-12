@@ -1,6 +1,10 @@
 # Release Notes
 
 
+## v1.0.6 (2023-10-12)
+
+- Product => success get.
+
 ## v1.0.5 (2023-10-11)
 
 - npm i react-toastify.

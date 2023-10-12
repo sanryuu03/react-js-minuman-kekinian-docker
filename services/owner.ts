@@ -11,3 +11,11 @@ export async function postMenu(data: FormData) {
         data,
     })
   }
+
+export async function getMenu(userId:string) {
+    const URL = `masterProduct/user/${userId}`
+    return callAPI({
+        url: `${ROOT_API}/${API_VERSION}/${URL}`,
+        method: 'GET',
+    })
+  }
