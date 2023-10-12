@@ -39,3 +39,11 @@ export async function getMenu(userId:string) {
         data
     })
   }
+
+  export async function deleteMenu(uuid:string, userId:string) {
+    const URL = `masterProduct/${uuid}/user/${userId}`
+    return callAPI({
+        url: `${ROOT_API}/${API_VERSION}/${URL}`,
+        method: 'DELETE',
+    })
+  }

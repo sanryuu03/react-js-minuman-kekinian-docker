@@ -1,13 +1,9 @@
-import { useCallback, useEffect, useState } from "react";
-import {
-  FcPlus,
-  FcEditImage,
-  FcEmptyTrash,
-  FcAddDatabase,
-} from "react-icons/fc";
+import { SyntheticEvent, useCallback, useEffect, useState } from "react";
+import { FcEditImage, FcEmptyTrash, FcAddDatabase } from "react-icons/fc";
 import { Link } from "react-router-dom";
-import { getMenu } from "../../services/owner";
+import { deleteMenu, getMenu } from "../../services/owner";
 import { MenuTypes } from "../../services/data-types";
+import { toast } from "react-toastify";
 
 export default function Product() {
   const [menuList, setMenuList] = useState([]);
@@ -21,6 +17,21 @@ export default function Product() {
   useEffect(() => {
     getMenuAPI();
   }, []);
+
+  const onDelete = async (
+    e: SyntheticEvent,
+    masterProductId: string,
+    userId: string
+  ) => {
+    e.preventDefault();
+    const hasil = await deleteMenu(masterProductId!, userId!);
+    if (hasil.error) {
+      toast.error(hasil.message);
+    } else {
+      toast.success("data berhasil dihapus");
+      getMenuAPI();
+    }
+  };
 
   return (
     <>
@@ -52,6 +63,16 @@ export default function Product() {
                     <Link to={`/product/${r.uuid}/user/${userId}`}>
                       <FcEditImage size={30} />
                     </Link>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        window.confirm(
+                          "Are you sure you wish to delete this item?"
+                        ) && onDelete(e, r.uuid, userId);
+                      }}
+                    >
+                      <FcEmptyTrash size={30} />
+                    </button>
                   </td>
                 </tr>
               );
