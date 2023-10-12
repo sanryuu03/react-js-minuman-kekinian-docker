@@ -1,6 +1,10 @@
 # Release Notes
 
 
+## v1.0.7 (2023-10-12)
+
+- Product => success edit and update.
+
 ## v1.0.6 (2023-10-12)
 
 - Product => success get.

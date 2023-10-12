@@ -6,6 +6,7 @@ export default function RoutesIndex() {
     const Dashboard = lazy(() => import('../Dashboard'))
     const Product = lazy(() => import('../Product'))
     const ProductForm = lazy(() => import('../Product/Form'))
+    const EditProduct = lazy(() => import('../Product/Form/Edit'))
 
     return (
         <MainLayouts>
@@ -31,6 +32,14 @@ export default function RoutesIndex() {
                     element={
                         <Suspense fallback={<div>loading...</div>}>
                             <ProductForm />
+                        </Suspense>
+                    }
+                />
+                <Route
+                    path="/product/:masterProductId/user/:userId"
+                    element={
+                        <Suspense fallback={<div>loading...</div>}>
+                            <EditProduct />
                         </Suspense>
                     }
                 />

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function Sidebar() {
     const [isActive, setIsActive] = useState('')
+    const master = 'master data'
 
     const onHandleSideBar = (e: SyntheticEvent) => {
         e.preventDefault()
@@ -22,7 +23,7 @@ export default function Sidebar() {
                 </li>
                 <li id="shop" className={isActive === 'shop' ? 'active' : ''} onClick={(e) => onHandleSideBar(e)}><a href="/shop"><i className='bx bx-store-alt'><BiStoreAlt /></i>Shop</a></li>
                 <li id="product" className={isActive === 'product' ? 'active' : ''} onClick={(e) => onHandleSideBar(e)}>
-                    <Link to={`/product`}><i className='bx'><BiDrink /></i>Product</Link>
+                    <Link to={`/product`}><i className='bx'><BiDrink /></i>{master} Product</Link>
                 </li>
                 <li id="analytics" className={isActive === 'analytics' ? 'active' : ''} onClick={(e) => onHandleSideBar(e)}><a href="/analytics"><i className='bx bx-analyse'><BiAnalyse /></i>Analytics</a></li>
                 <li id="tickets" className={isActive === 'tickets' ? 'active' : ''} onClick={(e) => onHandleSideBar(e)}><a href="/tickets"><i className='bx bx-message-square-dots'><BiMessageSquareDots /></i>Tickets</a></li>

@@ -49,7 +49,7 @@ export default function Product() {
                   <td>{r.description}</td>
                   <td>{r.ingredients}</td>
                   <td className="flex">
-                    <Link to={`/product/edit/${r.uuid}`}>
+                    <Link to={`/product/${r.uuid}/user/${userId}`}>
                       <FcEditImage size={30} />
                     </Link>
                   </td>
