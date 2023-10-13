@@ -11,3 +11,10 @@ export interface MenuTypes {
     description:string,
     ingredients:string
   }
+
+export interface SizeTypes {
+    id?:string,
+    uuid?:string,
+    name:string,
+    size:string,
+  }

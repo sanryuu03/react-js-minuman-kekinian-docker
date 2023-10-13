@@ -47,3 +47,45 @@ export async function getMenu(userId:string) {
         method: 'DELETE',
     })
   }
+
+export async function postSize(data: object) {
+    const URL = `size`
+    return callAPI({
+        url: `${ROOT_API}/${API_VERSION}/${URL}`,
+        method: 'POST',
+        data,
+    })
+  }
+
+export async function getSize() {
+    const URL = `size`
+    return callAPI({
+        url: `${ROOT_API}/${API_VERSION}/${URL}`,
+        method: 'GET',
+    })
+  }
+
+  export async function editSize(uuid:string) {
+    const URL = `size/${uuid}`
+    return callAPI({
+        url: `${ROOT_API}/${API_VERSION}/${URL}`,
+        method: 'GET',
+    })
+  }
+
+  export async function updateSize(uuid:string, data: object) {
+    const URL = `size/${uuid}`
+    return callAPI({
+        url: `${ROOT_API}/${API_VERSION}/${URL}`,
+        method: 'PUT',
+        data
+    })
+  }
+
+  export async function deleteSize(uuid:string, user_id:string) {
+    const URL = `size/${uuid}/user/${user_id}`
+    return callAPI({
+        url: `${ROOT_API}/${API_VERSION}/${URL}`,
+        method: 'DELETE',
+    })
+  }

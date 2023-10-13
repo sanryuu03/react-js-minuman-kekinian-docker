@@ -8,7 +8,7 @@ import {
 import { FcAddDatabase } from "react-icons/fc";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { IMG, editMenu, postMenu, updateMenu } from "../../../../services/owner";
+import { IMG, editMenu, updateMenu } from "../../../../services/owner";
 
 export default function EditProduct() {
   const { masterProductId, userId } = useParams();

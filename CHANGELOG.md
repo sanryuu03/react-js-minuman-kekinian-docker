@@ -1,6 +1,10 @@
 # Release Notes
 
 
+## v1.0.9 (2023-10-13)
+
+- CRUD Master Size.
+
 ## v1.0.8 (2023-10-12)
 
 - Product => success delete.
