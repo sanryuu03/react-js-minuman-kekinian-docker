@@ -10,6 +10,9 @@ export default function RoutesIndex() {
     const Size = lazy(() => import('../Size'))
     const SizeForm = lazy(() => import('../Size/Form'))
     const EditSize = lazy(() => import('../Size/Form/Edit'))
+    const HargaProduk = lazy(() => import('../HargaProduk'))
+    const HargaProdukForm = lazy(() => import('../HargaProduk/Form'))
+    const EditHargaProduk = lazy(() => import('../HargaProduk/Form/Edit'))
 
     return (
         <MainLayouts>
@@ -67,6 +70,30 @@ export default function RoutesIndex() {
                     element={
                         <Suspense fallback={<div>loading...</div>}>
                             <EditSize />
+                        </Suspense>
+                    }
+                />
+                <Route
+                    path="/harga"
+                    element={
+                        <Suspense fallback={<div>loading...</div>}>
+                            <HargaProduk />
+                        </Suspense>
+                    }
+                />
+                <Route
+                    path="/harga/form"
+                    element={
+                        <Suspense fallback={<div>loading...</div>}>
+                            <HargaProdukForm />
+                        </Suspense>
+                    }
+                />
+                <Route
+                    path="/harga/:productPriceId"
+                    element={
+                        <Suspense fallback={<div>loading...</div>}>
+                            <EditHargaProduk />
                         </Suspense>
                     }
                 />

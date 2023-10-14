@@ -89,3 +89,45 @@ export async function getSize() {
         method: 'DELETE',
     })
   }
+
+export async function postProductPrice(data: object) {
+    const URL = `productPrice`
+    return callAPI({
+        url: `${ROOT_API}/${API_VERSION}/${URL}`,
+        method: 'POST',
+        data,
+    })
+  }
+
+export async function getProductPrice() {
+    const URL = `productPrice`
+    return callAPI({
+        url: `${ROOT_API}/${API_VERSION}/${URL}`,
+        method: 'GET',
+    })
+  }
+
+  export async function editProductPrice(uuid:string) {
+    const URL = `productPrice/masterProduct/${uuid}`
+    return callAPI({
+        url: `${ROOT_API}/${API_VERSION}/${URL}`,
+        method: 'GET',
+    })
+  }
+
+  export async function updateProductPrice(uuid:string, data: object) {
+    const URL = `productPrice/${uuid}`
+    return callAPI({
+        url: `${ROOT_API}/${API_VERSION}/${URL}`,
+        method: 'PUT',
+        data
+    })
+  }
+
+  export async function deleteProductPrice(uuid:string, user_id:string) {
+    const URL = `productPrice/${uuid}/user/${user_id}`
+    return callAPI({
+        url: `${ROOT_API}/${API_VERSION}/${URL}`,
+        method: 'DELETE',
+    })
+  }

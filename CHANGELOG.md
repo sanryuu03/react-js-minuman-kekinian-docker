@@ -1,6 +1,12 @@
 # Release Notes
 
 
+## v1.0.10 (2023-10-14)
+
+- npm i --save react-select.
+- CRUD Master Size.
+- CRUD product price.
+
 ## v1.0.9 (2023-10-13)
 
 - CRUD Master Size.

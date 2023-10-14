@@ -18,3 +18,17 @@ export interface SizeTypes {
     name:string,
     size:string,
   }
+
+export interface SelectTypes {
+    value?:string,
+    label?:string,
+  }
+
+export interface ProductPriceTypes {
+    id?:string,
+    uuid?:string,
+    product_id:string,
+    size_id:string,
+    is_promo:boolean,
+    price:number,
+  }

@@ -2,6 +2,7 @@ import { SyntheticEvent, useState } from "react";
 import { BiCodeAlt, BiSolidDashboard, BiStoreAlt, BiAnalyse, BiMessageSquareDots, BiGroup, BiCog, BiLogOutCircle, BiDrink } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { CiGlass } from "react-icons/ci";
+import { FaRupiahSign } from "react-icons/fa6";
 
 export default function Sidebar() {
     const [isActive, setIsActive] = useState('')
@@ -28,6 +29,9 @@ export default function Sidebar() {
                 </li>
                 <li id="size" className={isActive === 'size' ? 'active' : ''} onClick={(e) => onHandleSideBar(e)}>
                     <Link to={`/size`}><i className='bx'><CiGlass /></i>{master} Size</Link>
+                </li>
+                <li id="harga" className={isActive === 'harga' ? 'active' : ''} onClick={(e) => onHandleSideBar(e)}>
+                    <Link to={`/harga`}><i className='bx'><FaRupiahSign /></i>harga produk</Link>
                 </li>
                 <li id="analytics" className={isActive === 'analytics' ? 'active' : ''} onClick={(e) => onHandleSideBar(e)}><a href="/analytics"><i className='bx bx-analyse'><BiAnalyse /></i>Analytics</a></li>
                 <li id="tickets" className={isActive === 'tickets' ? 'active' : ''} onClick={(e) => onHandleSideBar(e)}><a href="/tickets"><i className='bx bx-message-square-dots'><BiMessageSquareDots /></i>Tickets</a></li>

@@ -1,38 +1,38 @@
 import { SyntheticEvent, useCallback, useEffect, useState } from "react";
 import { FcEditImage, FcEmptyTrash, FcAddDatabase } from "react-icons/fc";
 import { Link } from "react-router-dom";
-import { deleteSize, getSize } from "../../services/owner";
-import { SizeTypes } from "../../services/data-types";
+import { deleteProductPrice, getProductPrice } from "../../services/owner";
+import { ProductPriceTypes } from "../../services/data-types";
 import { toast } from "react-toastify";
 
 export default function Product() {
-  const [sizeList, setSizeList] = useState([]);
+  const [productPriceList, setProductPriceList] = useState([]);
   const userId = "sanryuu";
 
-  const getSizeAPI = useCallback(async () => {
-    const dataAPI = await getSize();
-    setSizeList(dataAPI?.data);
+  const getProductPrizeAPI = useCallback(async () => {
+    const dataAPI = await getProductPrice();
+    setProductPriceList(dataAPI?.data);
   }, [userId]);
 
   useEffect(() => {
-    getSizeAPI();
+    getProductPrizeAPI();
   }, []);
 
-  const onDelete = async (e: SyntheticEvent, sizeId: string) => {
+  const onDelete = async (e: SyntheticEvent, productPriceId: string) => {
     e.preventDefault();
-    const hasil = await deleteSize(sizeId, userId);
+    const hasil = await deleteProductPrice(productPriceId, userId);
     if (hasil.error) {
       toast.error(hasil.message);
     } else {
       toast.success("data berhasil dihapus");
-      getSizeAPI();
+      getProductPrizeAPI();
     }
   };
 
   return (
     <>
       <div className="flex">
-        <Link to="/size/form">
+        <Link to="/harga/form">
           <FcAddDatabase size={30} />
         </Link>
       </div>
@@ -43,18 +43,22 @@ export default function Product() {
               <th>#</th>
               <th>Name</th>
               <th>Size</th>
+              <th>Promo</th>
+              <th>Harga</th>
               <th>Handle</th>
             </tr>
           </thead>
           <tbody>
-            {sizeList?.map((r: SizeTypes, i: number) => {
+            {productPriceList?.map((r: ProductPriceTypes, i: number) => {
               return (
                 <tr key={r.id}>
                   <th>{i + 1}</th>
-                  <td>{r.name}</td>
-                  <td>{r.size}</td>
+                  <td>{r.product_id}</td>
+                  <td>{r.size_id}</td>
+                  <td>{r.is_promo === true ? 'ya' : 'tidak'}</td>
+                  <td>{r.price}</td>
                   <td className="flex">
-                    <Link to={`/size/${r.uuid}`}>
+                    <Link to={`/harga/${r.uuid}`}>
                       <FcEditImage size={30} />
                     </Link>
                     <button
