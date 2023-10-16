@@ -1,6 +1,10 @@
 # Release Notes
 
 
+## v1.0.11 (2023-10-16)
+
+- product price => nama produk dan size produk.
+
 ## v1.0.10 (2023-10-14)
 
 - npm i --save react-select.

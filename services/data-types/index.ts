@@ -31,4 +31,6 @@ export interface ProductPriceTypes {
     size_id:string,
     is_promo:boolean,
     price:number,
+    name: string,
+    size:string
   }

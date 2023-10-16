@@ -51,10 +51,10 @@ export default function Product() {
           <tbody>
             {productPriceList?.map((r: ProductPriceTypes, i: number) => {
               return (
-                <tr key={r.id}>
+                <tr key={r.uuid}>
                   <th>{i + 1}</th>
-                  <td>{r.product_id}</td>
-                  <td>{r.size_id}</td>
+                  <td>{r.name}</td>
+                  <td>{r.size}</td>
                   <td>{r.is_promo === true ? 'ya' : 'tidak'}</td>
                   <td>{r.price}</td>
                   <td className="flex">
