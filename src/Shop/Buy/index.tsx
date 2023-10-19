@@ -12,10 +12,11 @@ import {
     getShopProduct,
     getShopProductPrice,
     getSize,
-    updateProductPrice,
+    postShopAddToCart,
 } from "../../../services/owner";
 import Select from "react-select";
 import { SelectTypes, SizeTypes } from "../../../services/data-types";
+import { rfc3339WithoutTimezoneOffset } from '../../../utils/rfc3339'
 
 export default function ShopBuy() {
     const { masterProductId } = useParams();
@@ -28,6 +29,11 @@ export default function ShopBuy() {
     const [price, setPrice] = useState(0);
     const [quantity, setQuantity] = useState(0);
     const [totalHarga, setTotalHarga] = useState(0);
+    const [buyer, setBuyer] = useState("");
+    const [buyerPhoneNumber, setBuyerPhoneNumber] = useState("");
+    const [buyerEmail, setBuyerEmail] = useState("");
+    const [buyerAddress, setBuyerAddress] = useState("");
+    const [purchaseDate, setPurchaseDate] = useState('');
     const userId = "sanryuu";
 
     const navigate = useNavigate();
@@ -46,6 +52,11 @@ export default function ShopBuy() {
     useEffect(() => {
         getMenuAPI();
         getSizeAPI();
+        const waktuINA = new Date((new Date).toLocaleString("en-US", {
+            timeZone: "Asia/Jakarta"
+        }))
+
+        setPurchaseDate(rfc3339WithoutTimezoneOffset(waktuINA))
     }, []);
 
     const getFilteredSizeAPI = async (selectOption: SelectTypes) => {
@@ -66,7 +77,7 @@ export default function ShopBuy() {
         getPriceAPI(masterProductId!, sizeId, isPromo);
     }, [sizeId, isPromo]);
 
-    const quantityHandle = (e: ChangeEvent<HTMLInputElement>)=>{
+    const quantityHandle = (e: ChangeEvent<HTMLInputElement>) => {
         const tempQuantity = +e.target.value
         setQuantity(tempQuantity)
         const tempTotalHarga = price * tempQuantity!
@@ -84,16 +95,21 @@ export default function ShopBuy() {
             product_id: menuID,
             size_id: sizeId,
             is_promo: isPromo,
-            price: +price,
+            quantity,
+            buyer,
+            buyer_phone_number: buyerPhoneNumber,
+            buyer_email: buyerEmail,
+            buyer_address: buyerAddress,
+            purchase_date: purchaseDate,
             email: email!,
         };
 
-        const hasil = await updateProductPrice(masterProductId!, data);
+        const hasil = await postShopAddToCart(data);
         if (hasil.error) {
             toast.error(hasil.message);
         } else {
             toast.success("data berhasil disimpan");
-            navigate("/harga");
+            navigate("/shop");
         }
     };
 
@@ -135,7 +151,7 @@ export default function ShopBuy() {
                 <div className="mb-3 form-control">
                     <label className="label">harga</label>
                     <input
-                        type="text"
+                        type="number"
                         className="w-full input input-bordered input-info glass"
                         placeholder="10000"
                         value={price}
@@ -150,17 +166,66 @@ export default function ShopBuy() {
                         placeholder="10000"
                         min={0}
                         value={quantity}
-                        onChange={(e)=> quantityHandle(e)}
+                        onChange={(e) => quantityHandle(e)}
                     />
                 </div>
                 <div className="mb-3 form-control">
                     <label className="label">total harga</label>
                     <input
-                        type="text"
+                        type="number"
                         className="w-full input input-bordered input-info glass"
                         placeholder="10000"
                         value={totalHarga}
                         disabled
+                    />
+                </div>
+                <div className="mb-3 form-control">
+                    <label className="label">buyer</label>
+                    <input
+                        type="text"
+                        className="w-full input input-bordered input-info"
+                        placeholder="nama pembeli"
+                        value={buyer}
+                        onChange={(e) => setBuyer(e.target.value)}
+                    />
+                </div>
+                <div className="mb-3 form-control">
+                    <label className="label">nomor HP buyer</label>
+                    <input
+                        type="text"
+                        className="w-full input input-bordered input-info"
+                        placeholder="nomor HP pembeli"
+                        value={buyerPhoneNumber}
+                        onChange={(e) => setBuyerPhoneNumber(e.target.value)}
+                    />
+                </div>
+                <div className="mb-3 form-control">
+                    <label className="label">email buyer</label>
+                    <input
+                        type="text"
+                        className="w-full input input-bordered input-info"
+                        placeholder="email pembeli"
+                        value={buyerEmail}
+                        onChange={(e) => setBuyerEmail(e.target.value)}
+                    />
+                </div>
+                <div className="mb-3 form-control">
+                    <label className="label">alamat buyer</label>
+                    <input
+                        type="text"
+                        className="w-full input input-bordered input-info"
+                        placeholder="alamat pembeli"
+                        value={buyerAddress}
+                        onChange={(e) => setBuyerAddress(e.target.value)}
+                    />
+                </div>
+                <div className="mb-3 form-control">
+                    <label className="label">tanggal pembelian</label>
+                    <input
+                        type="datetime-local"
+                        className="w-full input input-bordered input-info"
+                        value={purchaseDate}
+                        onChange={(e) => setPurchaseDate(e.target.value)}
                     />
                 </div>
                 <button type="submit" className="absolute right-10">

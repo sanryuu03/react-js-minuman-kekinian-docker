@@ -147,3 +147,12 @@ export async function getProductPrice() {
         method: 'GET',
     })
   }
+
+  export async function postShopAddToCart(data:object) {
+    const URL = `shop/addToCart`
+    return callAPI({
+        url: `${ROOT_API}/${API_VERSION}/${URL}`,
+        method: 'POST',
+        data
+    })
+  }

@@ -1,6 +1,12 @@
 # Release Notes
 
 
+## v1.0.13 (2023-10-19)
+
+- purchaseDate.
+- waktuINA and rfc3339WithoutTimezoneOffset.
+- shop buy page => success buy.
+
 ## v1.0.12 (2023-10-19)
 
 - shop and shop buy page.
