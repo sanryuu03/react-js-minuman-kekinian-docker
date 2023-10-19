@@ -9,7 +9,8 @@ export interface MenuTypes {
     uuid?:string,
     name:string,
     description:string,
-    ingredients:string
+    ingredients:string,
+    picture_path:string,
   }
 
 export interface SizeTypes {

@@ -131,3 +131,19 @@ export async function getProductPrice() {
         method: 'DELETE',
     })
   }
+
+  export async function getShopProduct(uuid:string, user_id:string) {
+    const URL = `shop/masterProduct/${uuid}/user/${user_id}`
+    return callAPI({
+        url: `${ROOT_API}/${API_VERSION}/${URL}`,
+        method: 'GET',
+    })
+  }
+
+  export async function getShopProductPrice(uuid:string, size_id:string, is_promo: boolean) {
+    const URL = `shop/masterProduct/${uuid}/size/${size_id}/promo/${is_promo}`
+    return callAPI({
+        url: `${ROOT_API}/${API_VERSION}/${URL}`,
+        method: 'GET',
+    })
+  }

@@ -1,6 +1,10 @@
 # Release Notes
 
 
+## v1.0.12 (2023-10-19)
+
+- shop and shop buy page.
+
 ## v1.0.11 (2023-10-16)
 
 - product price => nama produk dan size produk.

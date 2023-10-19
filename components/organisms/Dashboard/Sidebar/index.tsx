@@ -23,7 +23,9 @@ export default function Sidebar() {
                 <li id='dashboard' className={isActive === 'dashboard' ? 'active' : ''} onClick={(e) => onHandleSideBar(e)}>
                     <Link to="/"><i className='bx bxs-dashboard'><BiSolidDashboard /></i>Dashboard</Link>
                 </li>
-                <li id="shop" className={isActive === 'shop' ? 'active' : ''} onClick={(e) => onHandleSideBar(e)}><a href="/shop"><i className='bx bx-store-alt'><BiStoreAlt /></i>Shop</a></li>
+                <li id="shop" className={isActive === 'shop' ? 'active' : ''} onClick={(e) => onHandleSideBar(e)}>
+                    <Link to={`/shop`}><i className='bx bx-store-alt'><BiStoreAlt /></i>Shop</Link>
+                </li>
                 <li id="product" className={isActive === 'product' ? 'active' : ''} onClick={(e) => onHandleSideBar(e)}>
                     <Link to={`/product`}><i className='bx'><BiDrink /></i>{master} Product</Link>
                 </li>
