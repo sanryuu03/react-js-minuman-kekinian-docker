@@ -156,3 +156,11 @@ export async function getProductPrice() {
         data
     })
   }
+
+  export async function getTransactions() {
+    const URL = `transactions`
+    return callAPI({
+        url: `${ROOT_API}/${API_VERSION}/${URL}`,
+        method: 'GET',
+    })
+  }

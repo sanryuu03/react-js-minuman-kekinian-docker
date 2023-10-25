@@ -1,6 +1,10 @@
 # Release Notes
 
 
+## v1.0.14 (2023-10-25)
+
+- Transactions.
+
 ## v1.0.13 (2023-10-19)
 
 - purchaseDate.

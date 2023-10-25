@@ -35,3 +35,16 @@ export interface ProductPriceTypes {
     name: string,
     size:string
   }
+
+export interface TransactionsTypes {
+    id?:string,
+    uuid?:string,
+    name:string,
+    size:string,
+    is_promo:boolean,
+    quantity:number,
+    price:number,
+    amount: string,
+    buyer:string,
+    purchase_date:number,
+  }

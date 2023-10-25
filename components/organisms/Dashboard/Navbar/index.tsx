@@ -32,10 +32,6 @@ export default function Navbar() {
             </form>
             <input type="checkbox" id="theme-toggle" onChange={(e) => onToggle(e)} hidden />
             <label htmlFor="theme-toggle" className="theme-toggle" ></label>
-            <a href="#" className="notif">
-                <i className='bx'><BiBell /></i>
-                <span className="count">12</span>
-            </a>
             <a href="#" className="profile">
                 <img src="https://muhammadhasan.my.id/assets/me-6bc98b1b.png" />
             </a>
